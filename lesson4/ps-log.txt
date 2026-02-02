@@ -1,0 +1,82 @@
+Script started on 2026-02-02 15:44:27+03:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="170" LINES="45"]
+[?2004h]0;kali@DG: ~/codeby-devops/lesson4[;32m┌──([1;34mkali㉿DG[;32m)-[[0;1m~/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7mps aux[27m[C[C[C[Cps aux
+[?2004lUSER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.1  23960 13644 ?        Ss   12:56   0:00 /sbin/init
+root           2  0.0  0.0   3072  1792 ?        Sl   12:56   0:00 /init
+root           7  0.0  0.0   3072  1792 ?        Sl   12:56   0:00 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate
+root          55  0.0  0.1  51000 16128 ?        Ss   12:56   0:00 /usr/lib/systemd/systemd-journald
+root          78  0.0  0.0  34364 10624 ?        Ss   12:56   0:00 /usr/lib/systemd/systemd-udevd
+root         341  0.0  0.0   4276  2688 ?        Ss   12:56   0:00 /usr/sbin/cron -f
+message+     342  0.0  0.0   8544  4352 ?        Ss   12:56   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-onl
+root         345  0.0  0.1 2708968 18304 ?       Ssl  12:56   0:00 /usr/bin/mullvad-daemon -v --disable-stdout-timestamps
+polkitd      370  0.0  0.0 382028  9044 ?        Ssl  12:56   0:00 /usr/lib/polkit-1/polkitd --no-debug --log-level=notice
+root         374  0.0  0.0  18636  8576 ?        Ss   12:56   0:00 /usr/lib/systemd/systemd-logind
+root         406  0.0  0.0 307096  6336 ?        Ssl  12:56   0:00 /usr/sbin/lightdm
+root         414  0.0  0.0   5212  2432 hvc0     Ss+  12:56   0:00 /sbin/agetty -o -- \u --noreset --noclear --keep-baud 115200,57600,38400,9600 - vt220
+root         415  0.0  0.0   5168  2432 tty1     Ss+  12:56   0:00 /sbin/agetty -o -- \u --noreset --noclear - linux
+root         446  0.1  0.3 2243800 45772 ?       Ssl  12:56   0:16 /usr/bin/containerd
+root         801  0.0  0.7 4351408 86292 ?       Ssl  12:56   0:02 /usr/sbin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+root        1186  0.0  0.0   3080   896 ?        Ss   12:56   0:00 /init
+root        1187  0.0  0.0   3096  1024 ?        S    12:56   0:01 /init
+kali        1188  0.0  0.0  10824  6912 pts/0    Ss   12:56   0:00 -bash
+root        1189  0.0  0.0   7748  4352 ?        Ss   12:56   0:00 login -- kali
+kali        1199  0.0  0.1  22872 13056 ?        Ss   12:56   0:00 /usr/lib/systemd/systemd --user
+kali        1201  0.0  0.0  22860  3652 ?        S    12:56   0:00 (sd-pam)
+kali        1229  0.0  0.0   8064  3968 ?        Ss   12:56   0:00 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-on
+kali        1230  0.0  0.0  94164  7680 ?        Ssl  12:56   0:00 /usr/bin/pipewire
+kali        1232  0.0  0.0  82148  4736 ?        Ssl  12:56   0:00 /usr/bin/pipewire -c filter-chain.conf
+kali        1234  0.0  0.0   6128  5120 pts/1    Ss+  12:56   0:00 -bash
+kali        1235  0.0  0.1 396588 13440 ?        Ssl  12:56   0:00 /usr/bin/wireplumber
+kali        1237  0.0  0.0  96152  8064 ?        Ssl  12:56   0:00 /usr/bin/pipewire-pulse
+kali        1250  0.0  0.0   7224  3456 ?        Ss   12:56   0:00 /usr/bin/mpris-proxy
+rtkit       1253  0.0  0.0  21472  2944 ?        SNsl 12:56   0:00 /usr/libexec/rtkit-daemon
+root        5906  0.0  0.0  12160  8064 ?        Ss   15:29   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+kali        5910  0.5  0.0  16044 10852 pts/0    S+   15:29   0:04 ssh kali@localhost
+root        5911  0.0  0.1  20324 13440 ?        Ss   15:29   0:00 sshd-session: kali [priv]
+kali        5919  0.3  0.0  20452  8192 ?        S    15:29   0:03 sshd-session: kali@pts/2
+kali        5920  0.0  0.0  10572  7424 pts/2    Ss   15:29   0:00 -bash
+kali        6129  0.0  0.0   5576  2048 pts/2    S+   15:44   0:00 script ps-log.txt
+kali        6130  0.0  0.0   9120  5760 pts/3    Ss   15:44   0:00 bash -i
+kali        6134  0.0  0.0   9372  4224 pts/3    R+   15:44   0:00 ps aux
+
+[?2004h]0;kali@DG: ~/codeby-devops/lesson4[;32m┌──([1;34mkali㉿DG[;32m)-[[0;1m~/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7mps -u $USER[27m[C[C[C[Cps -u $USER
+[?2004l    PID TTY          TIME CMD
+   1188 pts/0    00:00:00 bash
+   1199 ?        00:00:00 systemd
+   1201 ?        00:00:00 (sd-pam)
+   1229 ?        00:00:00 dbus-daemon
+   1230 ?        00:00:00 pipewire
+   1232 ?        00:00:00 pipewire
+   1234 pts/1    00:00:00 bash
+   1235 ?        00:00:00 wireplumber
+   1237 ?        00:00:00 pipewire-pulse
+   1250 ?        00:00:00 mpris-proxy
+   5910 pts/0    00:00:04 ssh
+   5919 ?        00:00:03 sshd-session
+   5920 pts/2    00:00:00 bash
+   6129 pts/2    00:00:00 script
+   6130 pts/3    00:00:00 bash
+   6135 pts/3    00:00:00 ps
+
+[?2004h]0;kali@DG: ~/codeby-devops/lesson4[;32m┌──([1;34mkali㉿DG[;32m)-[[0;1m~/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7mtop &[27mtop &
+[?2004l[1] 6136
+
+[?2004h]0;kali@DG: ~/codeby-devops/lesson4[;32m┌──([1;34mkali㉿DG[;32m)-[[0;1m~/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [?1l>kill 6136
+[?2004l
+
+[1]+  Stopped                 top
+[?2004h]0;kali@DG: ~/codeby-devops/lesson4[;32m┌──([1;34mkali㉿DG[;32m)-[[0;1m~/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [?2004l
+exit
+There are stopped jobs.
+
+[?2004h]0;kali@DG: ~/codeby-devops/lesson4[;32m┌──([1;34mkali㉿DG[;32m)-[[0;1m~/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [?2004l
+exit
+[?1l>
+
+Script done on 2026-02-02 15:44:57+03:00 [COMMAND_EXIT_CODE="0"]

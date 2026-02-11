@@ -1,0 +1,33 @@
+Script started on 2026-02-02 16:07:57+03:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="170" LINES="45"]
+[?2004h]0;kali@DG: ~/codeby-devops/lesson4[;32m┌──([1;34mkali㉿DG[;32m)-[[0;1m~/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m java -verion[K[K[Ksion
+[?2004lopenjdk version "21.0.7" 2025-04-15
+OpenJDK Runtime Environment (build 21.0.7+6-Debian-1)
+OpenJDK 64-Bit Server VM (build 21.0.7+6-Debian-1, mixed mode, sharing)
+
+[?2004h]0;kali@DG: ~/codeby-devops/lesson4[;32m┌──([1;34mkali㉿DG[;32m)-[[0;1m~/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo update-alternatives --config java[27m[C[C[C[Csudo update-alternatives --config java
+[?2004l[sudo] password for kali: 
+There are 3 choices for the alternative java (providing /usr/bin/java).
+
+  Selection    Path                                         Priority   Status
+------------------------------------------------------------
+* 0            /usr/lib/jvm/java-21-openjdk-amd64/bin/java   2111      auto mode
+  1            /opt/jdk-25.0.2/bin/java                      2         manual mode
+  2            /usr/lib/jvm/java-11-openjdk-amd64/bin/java   1         manual mode
+  3            /usr/lib/jvm/java-21-openjdk-amd64/bin/java   2111      manual mode
+
+Press <enter> to keep the current choice[*], or type selection number: 1
+update-alternatives: using /opt/jdk-25.0.2/bin/java to provide /usr/bin/java (java) in manual mode
+
+[?2004h]0;kali@DG: ~/codeby-devops/lesson4[;32m┌──([1;34mkali㉿DG[;32m)-[[0;1m~/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m java -verio[K[Ksion
+[?2004ljava version "25.0.2" 2026-01-20 LTS
+Java(TM) SE Runtime Environment (build 25.0.2+10-LTS-69)
+Java HotSpot(TM) 64-Bit Server VM (build 25.0.2+10-LTS-69, mixed mode, sharing)
+
+[?2004h]0;kali@DG: ~/codeby-devops/lesson4[;32m┌──([1;34mkali㉿DG[;32m)-[[0;1m~/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [?2004l
+exit
+
+Script done on 2026-02-02 16:08:26+03:00 [COMMAND_EXIT_CODE="0"]

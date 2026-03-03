@@ -1,0 +1,24 @@
+- name: Set MySQL package name (Ubuntu)
+  set_fact:
+    mysql_packages:
+      - mysql-server
+      - python3-pymysql
+  when: ansible_os_family == "Debian"
+
+- name: Set MySQL package name (CentOS)
+  set_fact:
+    mysql_packages:
+      - mysql-server
+      - python3-PyMySQL
+  when: ansible_os_family == "RedHat"
+
+- name: Install MySQL packages
+  package:
+    name: "{{ mysql_packages }}"
+    state: present
+
+- name: Start and enable MySQL
+  service:
+    name: "{{ mysql_service }}"
+    state: started
+    enabled: true

@@ -1,0 +1,9 @@
+- hosts: db
+  become: true
+  roles:
+    - mysql
+
+- hosts: web
+  become: true
+  roles:
+    - apache

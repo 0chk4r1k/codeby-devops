@@ -1,0 +1,25 @@
+---
+- name: Install and configure nginx
+  hosts: web
+  become: true
+
+  tasks:
+
+    - name: Install required packages
+      apt:
+        name:
+          - wget
+          - htop
+          - nginx
+        state: present
+        update_cache: yes
+
+    - name: Check nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Show env info
+      debug:
+        msg: "This host is in {{ env }} environment"

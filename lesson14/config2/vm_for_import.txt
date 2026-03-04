@@ -1,0 +1,80 @@
+# yandex_compute_instance.imported_vm:
+resource "yandex_compute_instance" "imported_vm" {
+    created_at                = "2026-03-04T12:35:52Z"
+    folder_id                 = "b1g0rvde7a8fibpkkum5"
+    fqdn                      = "compute-vm-2-2-20-ssd-1772627401615.ru-central1.internal"
+    hardware_generation       = [
+        {
+            generation2_features = []
+            legacy_features      = [
+                {
+                    pci_topology = "PCI_TOPOLOGY_V2"
+                },
+            ]
+        },
+    ]
+    hostname                  = "compute-vm-2-2-20-ssd-1772627401615"
+    id                        = "fhmlqqgc9d2v57lfuoc1"
+    labels                    = {}
+    metadata                  = {
+        "enable-oslogin" = "true"
+    }
+    name                      = "compute-vm-2-2-20-ssd-1772627401615"
+    network_acceleration_type = "standard"
+    platform_id               = "standard-v3"
+    status                    = "running"
+    zone                      = "ru-central1-a"
+
+    boot_disk {
+        auto_delete = true
+        device_name = "fhm77vetua2t6q9if8ip"
+        disk_id     = "fhm77vetua2t6q9if8ip"
+        mode        = "READ_WRITE"
+
+        initialize_params {
+            block_size = 4096
+            image_id   = "fd8ccfejmpaipf677j5c"
+            name       = "disk-ubuntu-24-04-lts-1772627403848"
+            size       = 20
+            type       = "network-ssd"
+        }
+    }
+
+    metadata_options {
+        aws_v1_http_endpoint = 1
+        aws_v1_http_token    = 2
+        gce_http_endpoint    = 1
+        gce_http_token       = 1
+    }
+
+    network_interface {
+        index              = 0
+        ip_address         = "10.10.2.28"
+        ipv4               = true
+        ipv6               = false
+        mac_address        = "d0:0d:15:d6:a0:c4"
+        nat                = true
+        nat_ip_address     = "158.160.58.167"
+        nat_ip_version     = "IPV4"
+        security_group_ids = [
+            "enpfscnimhg1qnrp1aoc",
+        ]
+        subnet_id          = "e9b8ilr0p3fbd8a8a6nj"
+    }
+
+    placement_policy {
+        host_affinity_rules       = []
+        placement_group_partition = 0
+    }
+
+    resources {
+        core_fraction = 100
+        cores         = 2
+        gpus          = 0
+        memory        = 2
+    }
+
+    scheduling_policy {
+        preemptible = false
+    }
+}

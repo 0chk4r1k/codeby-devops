@@ -1,0 +1,29 @@
+Script started on 2026-03-11 18:20:22+03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="164" LINES="34"]
+]666;vte.shell.postexec=0\]7;file://user-VMware-Virtual-Platform/home/user/codeby-devops/lesson19\]0;user@user-VMware-Virtual-Platform:~/codeby-devops/lesson19\]666;vte.shell.precmd!\[?2004h]0;user@user-VMware-Virtual-Platform: ~/codeby-devops/lesson19[01;32muser@user-VMware-Virtual-Platform[00m:[01;34m~/codeby-devops/lesson19[00m$ [7mkubectl run nginx2 --image=nginx -n codeby --dry-run=client -o yaml > lesson19/nginx-imperative.yaml[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ckubectl run nginx2 --image=nginx -n codeby --dry-run=client -o yaml > lesson19/nginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml[1Pginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://user-VMware-Virtual-Platform/home/user/codeby-devops/lesson19\]0;user@user-VMware-Virtual-Platform:~/codeby-devops/lesson19\]666;vte.shell.precmd!\[?2004h]0;user@user-VMware-Virtual-Platform: ~/codeby-devops/lesson19[01;32muser@user-VMware-Virtual-Platform[00m:[01;34m~/codeby-devops/lesson19[00m$ cat nginx-imperative.yaml 
+[?2004l]133;C\]666;vte.shell.preexec!\apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx2
+  name: nginx2
+  namespace: codeby
+spec:
+  containers:
+  - image: nginx
+    name: nginx2
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+]666;vte.shell.postexec=0\]7;file://user-VMware-Virtual-Platform/home/user/codeby-devops/lesson19\]0;user@user-VMware-Virtual-Platform:~/codeby-devops/lesson19\]666;vte.shell.precmd!\[?2004h]0;user@user-VMware-Virtual-Platform: ~/codeby-devops/lesson19[01;32muser@user-VMware-Virtual-Platform[00m:[01;34m~/codeby-devops/lesson19[00m$ [7mkubectl apply -f lesson19/nginx-imperative.yaml[27mkubectl apply -f lesson19/nginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml[1Pginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml[1Pnginx-imperative.yaml
+[?2004l]133;C\]666;vte.shell.preexec!\pod/nginx2 created
+]666;vte.shell.postexec=0\]7;file://user-VMware-Virtual-Platform/home/user/codeby-devops/lesson19\]0;user@user-VMware-Virtual-Platform:~/codeby-devops/lesson19\]666;vte.shell.precmd!\[?2004h]0;user@user-VMware-Virtual-Platform: ~/codeby-devops/lesson19[01;32muser@user-VMware-Virtual-Platform[00m:[01;34m~/codeby-devops/lesson19[00m$ kubectl apply -f nginx-imperative.yaml[12Pcat nginx-imperative.yaml kubectl run nginx2 --image=nginx -n codeby --dry-run=client -o yaml > nginx-imperative.yaml[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kkubectl get pods -n codeby
+[?2004l]133;C\]666;vte.shell.preexec!\NAME     READY   STATUS    RESTARTS   AGE
+nginx    1/1     Running   0          85s
+nginx2   1/1     Running   0          10s
+]666;vte.shell.postexec=0\]7;file://user-VMware-Virtual-Platform/home/user/codeby-devops/lesson19\]0;user@user-VMware-Virtual-Platform:~/codeby-devops/lesson19\]666;vte.shell.precmd!\[?2004h]0;user@user-VMware-Virtual-Platform: ~/codeby-devops/lesson19[01;32muser@user-VMware-Virtual-Platform[00m:[01;34m~/codeby-devops/lesson19[00m$ exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-03-11 18:21:07+03:00 [COMMAND_EXIT_CODE="0"]

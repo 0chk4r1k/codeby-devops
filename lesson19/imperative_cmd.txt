@@ -1,0 +1,13 @@
+Script started on 2026-03-11 18:19:31+03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="164" LINES="34"]
+]666;vte.shell.postexec=0\]7;file://user-VMware-Virtual-Platform/home/user/codeby-devops/lesson19\]0;user@user-VMware-Virtual-Platform:~/codeby-devops/lesson19\]666;vte.shell.precmd!\[?2004h]0;user@user-VMware-Virtual-Platform: ~/codeby-devops/lesson19[01;32muser@user-VMware-Virtual-Platform[00m:[01;34m~/codeby-devops/lesson19[00m$ [7mkubectl run nginx --image=nginx -n codeby[27mkubectl run nginx --image=nginx -n codeby
+[?2004l]133;C\]666;vte.shell.preexec!\pod/nginx created
+]666;vte.shell.postexec=0\]7;file://user-VMware-Virtual-Platform/home/user/codeby-devops/lesson19\]0;user@user-VMware-Virtual-Platform:~/codeby-devops/lesson19\]666;vte.shell.precmd!\[?2004h]0;user@user-VMware-Virtual-Platform: ~/codeby-devops/lesson19[01;32muser@user-VMware-Virtual-Platform[00m:[01;34m~/codeby-devops/lesson19[00m$ [7mkubectl get pods -n codeby[27mkubectl get pods -n codeby
+[?2004l]133;C\]666;vte.shell.preexec!\NAME    READY   STATUS              RESTARTS   AGE
+nginx   0/1     ContainerCreating   0          6s
+]666;vte.shell.postexec=0\]7;file://user-VMware-Virtual-Platform/home/user/codeby-devops/lesson19\]0;user@user-VMware-Virtual-Platform:~/codeby-devops/lesson19\]666;vte.shell.precmd!\[?2004h]0;user@user-VMware-Virtual-Platform: ~/codeby-devops/lesson19[01;32muser@user-VMware-Virtual-Platform[00m:[01;34m~/codeby-devops/lesson19[00m$ kubectl get pods -n codeby
+[?2004l]133;C\]666;vte.shell.preexec!\NAME    READY   STATUS    RESTARTS   AGE
+nginx   1/1     Running   0          29s
+]666;vte.shell.postexec=0\]7;file://user-VMware-Virtual-Platform/home/user/codeby-devops/lesson19\]0;user@user-VMware-Virtual-Platform:~/codeby-devops/lesson19\]666;vte.shell.precmd!\[?2004h]0;user@user-VMware-Virtual-Platform: ~/codeby-devops/lesson19[01;32muser@user-VMware-Virtual-Platform[00m:[01;34m~/codeby-devops/lesson19[00m$ exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-03-11 18:20:11+03:00 [COMMAND_EXIT_CODE="0"]

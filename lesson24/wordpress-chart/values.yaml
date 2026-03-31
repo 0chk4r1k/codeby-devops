@@ -1,0 +1,30 @@
+wordpress:
+  image: wordpress:6.4
+  replicaCount: 2
+  servicePort: 80
+
+mysql:
+  image: mysql:8
+  storage: 5Gi
+
+persistence:
+  wordpress:
+    size: 5Gi
+  mysql:
+    size: 5Gi
+
+ingress:
+  enabled: true
+  host: wordpress.local
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  cpuUtilization: 70
+
+secrets:
+  mysqlRootPassword: rootpass
+  mysqlDatabase: wordpress
+  mysqlUser: wpuser
+  mysqlPassword: wppass

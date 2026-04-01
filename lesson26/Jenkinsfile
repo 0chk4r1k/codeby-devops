@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+    stages {
+        stage('Detect Changes') {
+            steps {
+                script {
+                    changedApps = []
+                    def diff = sh(script: "git diff --name-only origin/main...HEAD", returnStdout: true).trim()
+                    if (diff.contains("HelloWorld/")) changedApps << "HelloWorld"
+                    if (diff.contains("HelloJenkins/")) changedApps << "HelloJenkins"
+                    if (diff.contains("HelloDevops/")) changedApps << "HelloDevops"
+                    echo "Changed apps: ${changedApps}"
+                }
+            }
+        }
+        stage('Build, Test, Deploy') {
+            parallel {
+                stage('HelloWorld') {
+                    when { expression { changedApps.contains("HelloWorld") } }
+                    steps {
+                        dir('HelloWorld') {
+                            sh 'mvn clean install'
+                            sh 'mvn test'
+                            sh 'java -cp target/simple-java-maven-app-1.0-SNAPSHOT.jar com.example.App'
+                        }
+                    }
+                }
+                stage('HelloJenkins') {
+                    when { expression { changedApps.contains("HelloJenkins") } }
+                    steps {
+                        dir('HelloJenkins') {
+                            sh 'mvn clean install'
+                            sh 'mvn test'
+                            sh 'java -cp target/simple-java-maven-app-1.0-SNAPSHOT.jar com.example.App'
+                        }
+                    }
+                }
+                stage('HelloDevops') {
+                    when { expression { changedApps.contains("HelloDevops") } }
+                    steps {
+                        dir('HelloDevops') {
+                            sh 'mvn clean install'
+                            sh 'mvn test'
+                            sh 'java -cp target/simple-java-maven-app-1.0-SNAPSHOT.jar com.example.App'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

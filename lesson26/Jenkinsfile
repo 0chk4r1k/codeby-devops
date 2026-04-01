@@ -4,21 +4,42 @@ pipeline {
         stage('Detect Changes') {
             steps {
                 script {
-                    changedApps = []
-                    def diff = sh(script: "git diff --name-only origin/main...HEAD", returnStdout: true).trim()
+                    def changedApps = []
+                    def hasPrevCommit = sh(
+                        script: "git rev-parse HEAD~1",
+                        returnStatus: true
+                    ) == 0
+
+                    def diff = ""
+
+                    if (hasPrevCommit) {
+                        diff = sh(
+                            script: "git diff --name-only HEAD~1 HEAD",
+                            returnStdout: true
+                        ).trim()
+                    } else {
+                        echo "First build - all apps have changes"
+                        diff = "HelloWorld/ HelloJenkins/ HelloDevops/"
+                    }
+
+                    echo "Changed files:\n${diff}"
+
                     if (diff.contains("HelloWorld/")) changedApps << "HelloWorld"
                     if (diff.contains("HelloJenkins/")) changedApps << "HelloJenkins"
                     if (diff.contains("HelloDevops/")) changedApps << "HelloDevops"
-                    echo "Changed apps: ${changedApps}"
+
+                    env.CHANGED_APPS = changedApps.join(',')
+                    echo "Changed apps: ${env.CHANGED_APPS}"
                 }
             }
         }
+
         stage('Build, Test, Deploy') {
             parallel {
                 stage('HelloWorld') {
-                    when { expression { changedApps.contains("HelloWorld") } }
+                    when { expression { env.CHANGED_APPS.split(',').contains("HelloWorld") } }
                     steps {
-                        dir('HelloWorld') {
+                        dir('lesson26/HelloWorld') {
                             sh 'mvn clean install'
                             sh 'mvn test'
                             sh 'java -cp target/simple-java-maven-app-1.0-SNAPSHOT.jar com.example.App'
@@ -26,9 +47,9 @@ pipeline {
                     }
                 }
                 stage('HelloJenkins') {
-                    when { expression { changedApps.contains("HelloJenkins") } }
+                    when { expression { env.CHANGED_APPS.split(',').contains("HelloJenkins") } }
                     steps {
-                        dir('HelloJenkins') {
+                        dir('lesson26/HelloJenkins') {
                             sh 'mvn clean install'
                             sh 'mvn test'
                             sh 'java -cp target/simple-java-maven-app-1.0-SNAPSHOT.jar com.example.App'
@@ -36,9 +57,9 @@ pipeline {
                     }
                 }
                 stage('HelloDevops') {
-                    when { expression { changedApps.contains("HelloDevops") } }
+                    when { expression { env.CHANGED_APPS.split(',').contains("HelloDevops") } }
                     steps {
-                        dir('HelloDevops') {
+                        dir('lesson26/HelloDevops') {
                             sh 'mvn clean install'
                             sh 'mvn test'
                             sh 'java -cp target/simple-java-maven-app-1.0-SNAPSHOT.jar com.example.App'

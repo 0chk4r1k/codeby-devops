@@ -5,7 +5,7 @@ package com.mycompany.app;
  */
 public class App {
 
-    private static final String MESSAGE = "Hello Devops! Check updates!";
+    private static final String MESSAGE = "Hello Devops! And SonarQube!";
 
     public App() {}
 

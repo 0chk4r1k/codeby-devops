@@ -42,7 +42,7 @@ pipeline {
                         dir('lesson26/HelloWorld') {
                             sh 'mvn clean install'
                             sh 'mvn test'
-                            sh 'java -cp target/simple-java-maven-app-1.0-SNAPSHOT.jar com.mycompany.app.App'
+                            sh 'mvn exec:java -Dexec.mainClass="com.mycompany.app.App"'
                         }
                     }
                 }
@@ -52,7 +52,7 @@ pipeline {
                         dir('lesson26/HelloJenkins') {
                             sh 'mvn clean install'
                             sh 'mvn test'
-                            sh 'java -cp target/simple-java-maven-app-1.0-SNAPSHOT.jar com.mycompany.app.App'
+                            sh 'mvn exec:java -Dexec.mainClass="com.mycompany.app.App"'
                         }
                     }
                 }
@@ -62,7 +62,7 @@ pipeline {
                         dir('lesson26/HelloDevops') {
                             sh 'mvn clean install'
                             sh 'mvn test'
-                            sh 'java -cp target/simple-java-maven-app-1.0-SNAPSHOT.jar com.mycompany.app.App'
+                            sh 'mvn exec:java -Dexec.mainClass="com.mycompany.app.App"'
                         }
                     }
                 }

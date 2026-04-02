@@ -1,0 +1,72 @@
+pipeline {
+    agent any
+    stages {
+        stage('Detect Changes') {
+            steps {
+                script {
+                    def changedApps = []
+                    def hasPrevCommit = sh(
+                        script: "git rev-parse HEAD~1",
+                        returnStatus: true
+                    ) == 0
+
+                    def diff = ""
+
+                    if (hasPrevCommit) {
+                        diff = sh(
+                            script: "git diff --name-only HEAD~1 HEAD",
+                            returnStdout: true
+                        ).trim()
+                    } else {
+                        echo "First build - all apps have changes"
+                        diff = "HelloWorld/ HelloJenkins/ HelloDevops/"
+                    }
+
+                    echo "Changed files:\n${diff}"
+
+                    if (diff.contains("HelloWorld/")) changedApps << "HelloWorld"
+                    if (diff.contains("HelloJenkins/")) changedApps << "HelloJenkins"
+                    if (diff.contains("HelloDevops/")) changedApps << "HelloDevops"
+
+                    env.CHANGED_APPS = changedApps.join(',')
+                    echo "Changed apps: ${env.CHANGED_APPS}"
+                }
+            }
+        }
+
+        stage('Build, Test, Deploy') {
+            parallel {
+                stage('HelloWorld') {
+                    when { expression { env.CHANGED_APPS.split(',').contains("HelloWorld") } }
+                    steps {
+                        dir('lesson26/HelloWorld') {
+                            sh 'mvn clean install'
+                            sh 'mvn test'
+                            sh 'mvn exec:java -Dexec.mainClass="com.mycompany.app.App"'
+                        }
+                    }
+                }
+                stage('HelloJenkins') {
+                    when { expression { env.CHANGED_APPS.split(',').contains("HelloJenkins") } }
+                    steps {
+                        dir('lesson26/HelloJenkins') {
+                            sh 'mvn clean install'
+                            sh 'mvn test'
+                            sh 'mvn exec:java -Dexec.mainClass="com.mycompany.app.App"'
+                        }
+                    }
+                }
+                stage('HelloDevops') {
+                    when { expression { env.CHANGED_APPS.split(',').contains("HelloDevops") } }
+                    steps {
+                        dir('lesson26/HelloDevops') {
+                            sh 'mvn clean install'
+                            sh 'mvn test'
+                            sh 'mvn exec:java -Dexec.mainClass="com.mycompany.app.App"'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

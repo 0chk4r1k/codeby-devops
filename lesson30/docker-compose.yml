@@ -1,0 +1,108 @@
+services:
+  post_db:
+    image: mongo:3.2
+    volumes:
+      - post_db:/data/db
+    networks:
+      - logging
+
+  ui:
+    image: ghcr.io/codeby-devops/ui:logging
+    environment:
+      - POST_SERVICE_HOST=post
+      - POST_SERVICE_PORT=5000
+      - COMMENT_SERVICE_HOST=comment
+      - COMMENT_SERVICE_PORT=9292
+    ports:
+      - 9292:9292/tcp
+    depends_on:
+      - comment
+      - post
+      - fluentd
+    networks:
+      - logging
+    logging:
+      driver: fluentd
+      options:
+        "fluentd-address": "fluentd:24224"
+        "tag": "service.ui"
+
+  post:
+    image: ghcr.io/codeby-devops/post:logging
+    environment:
+      - POST_DATABASE_HOST=post_db
+      - POST_DATABASE=posts
+    depends_on:
+      - post_db
+      - fluentd
+    ports:
+      - "5000:5000"
+    networks:
+      - logging
+    logging:
+      driver: fluentd
+      options:
+        "fluentd-address": "fluentd:24224"
+        "tag": "service.post"
+
+  comment:
+    image: ghcr.io/codeby-devops/comment:logging
+    environment:
+      - COMMENT_DATABASE_HOST=post_db
+      - COMMENT_DATABASE=comments
+    depends_on:
+      - post_db
+      - fluentd
+    networks:
+      - logging
+    logging:
+      driver: fluentd
+      options:
+        "fluentd-address": "fluentd:24224"
+        "tag": "service.comment"
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:8.10.2
+    expose:
+      - 9200
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    networks:
+      - logging
+
+  fluentd:
+    build:
+      context: ./fluentd
+      dockerfile: Dockerfile
+    container_name: fluentd
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    depends_on:
+      - elasticsearch
+    networks:
+      - logging
+
+  kibana:
+    container_name: kibana
+    image: kibana:7.6.2
+    ports:
+      - "5601:5601"
+    networks:
+      - logging
+
+volumes:
+  post_db:
+
+networks:
+  logging:
